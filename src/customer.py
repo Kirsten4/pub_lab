@@ -5,9 +5,17 @@ class Customer:
         self.age = age
         self.drunkenness = drunkenness
 
+    def can_afford_drink(self,drink):
+        return self.wallet >= drink.price
+        
     def buy_drink(self, drink):
-        self.wallet -= drink.price 
-        self.drunkenness += drink.alcohol_level
+        if self.can_afford_drink(drink):
+            self.wallet -= drink.price 
+            self.drunkenness += drink.alcohol_level
+
+    def buy_food(self,food):
+        self.drunkenness -= food.rejuvenation_level
+        self.wallet -= food.price
 
     
     
